@@ -9,9 +9,14 @@
 
 ## How to use
 
+Before use, create a database in your local system using mysql.
+
 ```shell
 - git clone https://github.com/AdkPrtm/test-teknis-comtelindo.git
 - cd test-teknis-comtelindo
+- php artisan migrate:fresh
+- php artisan db:seed --class=ProductSeeder
+- php artisan key:generate 
 - npm i
 - npm run dev 
 - php artisan serve
