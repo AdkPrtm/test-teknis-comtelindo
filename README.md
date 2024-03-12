@@ -9,7 +9,7 @@
 
 ## How to use
 
-Before use, create a database in your local system using mysql.
+Before use, create a database in your local system using mysql and copy env.example file to .env for fill database name.
 
 ```shell
 - git clone https://github.com/AdkPrtm/test-teknis-comtelindo.git

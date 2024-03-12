@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Artisan;
 class OrderTest extends TestCase
 {
     use RefreshDatabase;
-
+    
     public function test_input_data_order(): void
     {
         Artisan::call('db:seed --class=ProductSeeder');
@@ -146,10 +146,12 @@ class OrderTest extends TestCase
 
                 $responseData = $this->get("/order/$orderIdData");
                 $responseData->assertViewIs('order');
-                $responseData->assertViewHas('orders', function ($orders) use ($orderIdData) {
-                    if ($orders->count() > 0) {
-                        $resultIdOrder = $orders->first()->id;
-                        return $resultIdOrder == $orderIdData;
+                $responseData->assertViewHas('orders', function ($orders) use ($orderIdData, $user) {
+                    $nameUserResultBool = $orders->first()->userData->name == $user->name;
+                    $idOrderResultBool = $orders->first()->id == $orderIdData;
+                    //Check if data user name and id order is matching on order
+                    if ($nameUserResultBool && $idOrderResultBool) {
+                        return true;
                     }
                     return false;
                 });
@@ -185,7 +187,7 @@ class OrderTest extends TestCase
 
             $responseDecrementProduct = $this->get('/product');
             $responseDecrementProduct->assertViewHas('products', function ($products) use (&$idProduct) {
-                foreach($products as $productData){
+                foreach ($products as $productData) {
                     if ($productData->id == $idProduct) {
                         //Check if Stock decrement after success add order
                         if ($productData->stock == 98) {

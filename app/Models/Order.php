@@ -19,11 +19,11 @@ class Order extends Model
         'quantity'
     ];
 
-    public function product() {
-        return $this->belongsTo(Product::class);
+    public function productData() {
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function userData() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

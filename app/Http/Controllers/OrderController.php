@@ -21,9 +21,14 @@ class OrderController extends Controller
     public function showByIdOrder($orderId): View
     {
         $userId = auth()->id();
-        return view('order', ['orders' => Order::where('user_id', $userId)
+
+        $result = Order::with('userData', 'productData')
+            ->where('user_id', $userId)
             ->where('id', (int)$orderId)
-            ->get()]);
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('order', ['orders' => $result]);
     }
 
     public function store(Request $request): View
