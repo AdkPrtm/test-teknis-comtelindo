@@ -30,8 +30,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/order', [OrderController::class, 'show']);
     Route::get('/order/{orderId}', [OrderController::class, 'showByIdOrder']);
     Route::post('/order', [OrderController::class, 'store']);
-    Route::put('/order', [OrderController::class, 'update']);
-    Route::delete('/order', [OrderController::class, 'delete']);
+    // Route::put('/order', [OrderController::class, 'update']);
+    // Route::delete('/order', [OrderController::class, 'delete']);
 
     
 });

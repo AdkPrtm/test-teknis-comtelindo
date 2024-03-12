@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## How to use
+# How to use
 
-Before use, create a database in your local system using mysql and copy env.example file to .env for fill database name.
+### Before use, create a database in your local system using mysql and copy env.example file to .env for fill database name.
 
 ```shell
 - git clone https://github.com/AdkPrtm/test-teknis-comtelindo.git
@@ -22,12 +22,18 @@ Before use, create a database in your local system using mysql and copy env.exam
 - php artisan serve
 ```
 
-To run test app open new terminal and type 
+## To run test app open new terminal and type 
 ```shell
 - php artisan test
 ```
 
-NOTE:
+### If you want try see the order page, please register your account first to get id and change the OrderSeeder id of user. After that run this command
+
+```shell
+php artisan db:seed --class=OrderSeeder
+```
+
+## NOTE:
 - After `npm run dev` please do not close and open new terminal to running `php artisan serve`
-- Run this application with internet connection
 - I can't be a Frontend Engginer website at all, so this web is just a functionality run through feature test.
+- Run this application with internet connection

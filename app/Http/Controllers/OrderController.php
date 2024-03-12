@@ -15,7 +15,8 @@ class OrderController extends Controller
     public function show(): View
     {
         $userId = auth()->id();
-        return view('order', ['orders' => Order::where('user_id', $userId)]);
+        $result = Order::where('user_id', $userId)->get();
+        return view('order', ['orders' => $result]);
     }
 
     public function showByIdOrder($orderId): View
@@ -65,6 +66,6 @@ class OrderController extends Controller
         }
         $product->update(['stock' => $newStock]);
         DB::commit();
-        return view('order', ['orders' => Order::where('user_id', $userId)]);
+        return view('order', ['orders' => Order::where('user_id', $userId)->get()]);
     }
 }
